@@ -1,0 +1,171 @@
+// import global rules
+@use "./sass/layout/globalRules" as *;
+
+// import colors
+@use "./sass//helpers/colors" as *;
+
+main {
+    background-image: linear-gradient($softViolet, $softBlue);
+    background-image: -moz-linear-gradient($softViolet, $softBlue);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.content {
+    position: relative;
+    .box {
+        position: absolute;
+        z-index: 1;
+        top: 60%;
+        left: -7rem;
+        transform: translateY(-50%);
+    }
+}
+
+.container {
+    width: 80rem;
+    margin: 1rem auto;
+    background-color: $lgblue;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.one {
+    flex: 1;
+    height: 40rem;
+    .desktop {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        .bg-desktop {
+            position: absolute;
+            left: -11%;
+            top: 35%;
+            transform: translate(-50%, -50%);
+        }
+        .desktop-img {
+            position: absolute;
+            left: 15rem;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .mobile {
+        position: relative;
+        height: 100%;
+        display: none;
+        .bg-mobile {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .mobile-img {
+            position: absolute;
+            top: -13rem;
+            width: 25rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+.two {
+    flex: 1;
+    padding: 5rem 0;
+    padding-right: 5rem;
+}
+
+.logo h1 {
+    text-transform: uppercase;
+    color: $vdblue;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+
+.btn,p {
+    width: 100%;
+    border: none;
+    padding: 1rem 0;
+    background-color: transparent;
+    font-size: 1.4rem;
+    color: $dgblue
+}
+
+.btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $light;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.active {
+    color: $vdblue;
+}
+
+.btn::after {
+    content: url("./images/icon-arrow-down.svg");
+    transition: all .3s ease;
+}
+
+.rotate::after {
+    rotate: 180deg;
+}
+
+.hide {
+    display: none;
+}
+
+// Responsive web site
+@media only screen and (max-width: 992px) {
+    .container {
+        width: 70rem;
+    }
+  }
+
+  @media only screen and (max-width: 860px) {
+    .content {
+        width: 100%;
+        .box {
+            display: none;
+        }
+    }
+
+    .container {
+        width: calc(100% - 4rem);
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+    }
+
+    .logo h1 {
+        text-align: center;
+        margin-top: 10rem;
+    }
+
+    .one,.two {
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .one .mobile {
+        display: block;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size:  1rem;
+    }
+  }
